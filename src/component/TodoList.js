@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import TodoItem from './TodoItem';
-import '../App.css'
+import '../App.css';
 class TodoList extends Component {
-    componentDidMount() {
-        this.props.onGetAll();
-    }
+  componentDidMount() {
+    this.props.onGetAll();
+  }
   render() {
-        console.log(this.props.todos)
+    console.log(this.props.todos);
     return (
       <div>
         <ol>

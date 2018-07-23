@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import Todo from '../model/Todo';
 import '../App.css';
+import { Checkbox, List } from 'antd';
+import Input from 'antd/es/input/Input';
+
 class TodoItem extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +13,7 @@ class TodoItem extends Component {
   }
 
   changeToEditable() {
+    alert('come!');
     this.setState({ status: 'write' });
   }
 
@@ -28,22 +32,17 @@ class TodoItem extends Component {
   render() {
     const item = this.props.item;
     return (
-      <li className={item.status}>
-        {
-          <input
-            type="checkbox"
-            className="done-todo"
-            defaultChecked={item.status === Todo.COMPLETED}
-            onClick={e => this.toggleActive(item.viewId)}
-          />
-        }
+      <List.Item>
+        <Checkbox
+          checked={item.status === Todo.COMPLETED}
+          onChange={e => this.toggleActive(item.viewId)}
+        />
         <span onDoubleClick={e => this.changeToEditable(e)}>
           {this.state.status === 'read' ? (
             item.content
           ) : (
-            <input
+            <Input
               autoFocus
-              className="edit-input"
               defaultValue={item.content}
               onKeyUp={e =>
                 this.updateItem(e, item.viewId, e.currentTarget.value)
@@ -51,7 +50,7 @@ class TodoItem extends Component {
             />
           )}
         </span>
-      </li>
+      </List.Item>
     );
   }
 }
