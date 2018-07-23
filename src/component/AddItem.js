@@ -1,25 +1,31 @@
 import React, { Component } from 'react';
 import Todo from '../model/Todo';
+import { Input } from 'antd';
+
+
 export default class AddItem extends Component {
   constructor(props) {
     super(props);
     this.newItem = React.createRef();
   }
 
-  add = () => {
-    const conetent = this.refs.newItem.value;
-    this.props.onAddItem(conetent);
-    this.refs.newItem.value = '';
+  add = (value) => {
+
+    this.props.onAddItem(value);
   };
 
   render() {
+      const Search = Input.Search;
     return (
-      <div>
-        <input className="input-text" id="todo-creator" ref="newItem" />
-        <div className="button" onClick={e => this.add(e)}>
-          Add
-        </div>
-      </div>
+          <div>
+
+              <Search
+                  placeholder="input add text"
+                  enterButton="Add"
+                  size="middle"
+                  onSearch={value => this.add(value)}
+              />
+          </div>
     );
   }
 }
