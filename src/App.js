@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import AddItemContainer from './container/AddItemContainer';
-import TodoListContainer from './container/TodoListContainer';
-import FilterContainer from './container/FilterContainer';
+import FilterList from "./component/FilterList";
 class App extends Component {
   render() {
     return (
@@ -14,8 +13,8 @@ class App extends Component {
           </p>
         </div>
         <AddItemContainer />
-        <TodoListContainer />
-        <FilterContainer />
+        {/*<TodoListContainer />*/}
+        <FilterList />
       </div>
     );
   }

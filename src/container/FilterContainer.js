@@ -7,14 +7,6 @@ const mapStateToProps = (state, ownProps) => {
     statusOfList: state.statusOfList
   };
 };
-const mapDispatchToProps = (dispatch) => {
-  return {
-    onFilterTodos: statusOfList => {
-     todosAPI.filerByStatus(statusOfList,dispatch);
-    }
-  };
-};
-
 export default connect(
   mapStateToProps,
   mapDispatchToProps

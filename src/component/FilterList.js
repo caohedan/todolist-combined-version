@@ -1,55 +1,56 @@
-import Todo from '../model/Todo';
+import React, {Component} from 'react';
 import classNames from 'classnames';
-import React, { Component } from 'react';
+import Todo from '../model/Todo'
+import {
+    BrowserRouter,
+    Route
+} from 'react-router-dom'
+import TodoList from "../container/TodoListContainer";
 export default class FilterList extends Component {
-  showFilterList(event) {
-    const statusOfList = event.target.attributes.getNamedItem('data-filter')
-      .value;
-    this.props.onFilterTodos(statusOfList);
-  }
 
-  render() {
-    return (
-      <div>
-        <ul className="filters">
-          <li>
-            <a
-              href="#all"
-              onClick={e => this.showFilterList(e)}
-              data-filter="all"
-              className={classNames({
-                selected: this.statusOfList === Todo.ALL
-              })}
-            >
-              ALL
-            </a>
-          </li>
-          <li>
-            <a
-              href="#active"
-              onClick={e => this.showFilterList(e)}
-              data-filter="active"
-              className={classNames({
-                selected: this.statusOfList === Todo.ACTIVE
-              })}
-            >
-              Active
-            </a>
-          </li>
-          <li>
-            <a
-              href="#completed"
-              onClick={e => this.showFilterList(e)}
-              data-filter="completed"
-              className={classNames({
-                selected: this.statusOfList === Todo.COMPLETED
-              })}
-            >
-              Complete
-            </a>
-          </li>
-        </ul>
-      </div>
-    );
-  }
+    render() {
+        return (
+
+            <BrowserRouter>
+                <div>
+                    <Route exact path="/" component={TodoList}></Route>
+                    <Route path="/:status" component={TodoList}></Route>
+                    <ul className="filters">
+                        <li><a
+                            href="/all"
+                            data-filter="all"
+                            className={classNames({
+                                selected: this.statusOfList === Todo.ALL
+                            })}
+                        >
+                            ALL
+                        </a></li>
+                        <li>
+
+                            <a
+                                href="/active"
+                                data-filter="active"
+                                className={classNames({
+                                    selected: this.statusOfList === Todo.ACTIVE
+                                })}
+                            >
+                                Active
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="/completed"
+                                data-filter="completed"
+                                className={classNames({
+                                    selected: this.statusOfList === Todo.COMPLETED
+                                })}
+                            >
+                                Complete
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }

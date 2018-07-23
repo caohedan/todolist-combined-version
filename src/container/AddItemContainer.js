@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    onAddItem: todo => {
-      todosAPI.add(todo,dispatch);
+    onAddItem: conetent => {
+      todosAPI.add(conetent,dispatch);
       // dispatch(addItem(todo));
     }
   };

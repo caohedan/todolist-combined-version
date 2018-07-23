@@ -10,6 +10,7 @@ const todosAPI = {
             .get(`${apiUrl}/todos`)
             .then(function (response) {
                 todosAPI.todos = response.data._embedded.todos.map(x => new Todo(x.id,x.content,x.status));
+                console.log(todosAPI.todos)
                 dispatch(getAllTodos(todosAPI.todos));
             })
             .catch(function (error) {
@@ -17,11 +18,10 @@ const todosAPI = {
             });
     },
 
-    add(todo,dispatch) {
+    add(conetent,dispatch) {
         axios
             .post(`${apiUrl}/todos`, {
-                id: todo.viewId,
-                content: todo.content,
+                content: conetent,
                 status: Todo.ACTIVE
             })
             .then(function (response) {

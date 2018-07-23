@@ -6,6 +6,7 @@ class TodoList extends Component {
         this.props.onGetAll();
     }
   render() {
+        console.log(this.props.todos)
     return (
       <div>
         <ol>

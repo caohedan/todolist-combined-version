@@ -7,8 +7,8 @@ export default class AddItem extends Component {
   }
 
   add = () => {
-    const todo = new Todo(this.refs.newItem.value);
-    this.props.onAddItem(todo);
+    const conetent = this.refs.newItem.value;
+    this.props.onAddItem(conetent);
     this.refs.newItem.value = '';
   };
 
