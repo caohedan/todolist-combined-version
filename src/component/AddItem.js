@@ -22,7 +22,7 @@ export default class AddItem extends Component {
               <Search
                   placeholder="input add text"
                   enterButton="Add"
-                  size="middle"
+                  size="large"
                   onSearch={value => this.add(value)}
               />
           </div>
